@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css" />
+    <!--<link rel="stylesheet" href="./style.css" />-->
   </head>
   <body class="body">
     <div class="page">
@@ -12,82 +13,104 @@
         <img src="./images/logo.svg" alt="лого" class="header__logo" />
       </header>
       <main class="content">
-        <div class="profile">
-          <img src="./images/image.png" alt="Аватар" class="profile__avatar" />
-          <div class="prifile__info">
-            <p class="prifile__name">Жак-Ив Кусто</p>
-            <p class="profile__des">Исследователь окена</p>
+        <section class="profile">
+          <div class="profile__ava-plus-info">
             <img
-              src="./images/Edit-Button.svg"
-              alt="Редактировать"
-              class="profile__edit-button"
+              src="./images/image.png"
+              alt="Аватар"
+              class="profile__avatar"
             />
+            <div class="profile__info">
+              <div class="profile__name-plus-edit">
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <button class="profile__edit-button">
+                  <img
+                    src="./images/Edit-Button.svg"
+                    alt="Редактировать"
+                    class="profile__edit-button-svg"
+                  />
+                </button>
+              </div>
+              <p class="profile__des">Исследователь океана</p>
+            </div>
           </div>
-          <div class="profile__add-button">
-            <img
-              src="./images/plus.svg"
-              alt="Добавить"
-              class="profile__plus"
-            />
-          </div>
-        </div>
+          <button class="profile__add-button">
+            <img src="./images/plus.svg" alt="Добавить" class="profile__plus" />
+          </button>
+        </section>
         <section class="cards">
           <article class="card">
-            <img src="./images/(1).png" alt="храм" class="cards__image" />
-            <div class="cards__info">
-              <p class="cards__place-name">Карачаево-Черкессия</p>
-              <img src="./images/like.svg" alt="Лайк" class="cards__like" />
+            <img src="./images/(1).png" alt="храм" class="card__image" />
+            <div class="card__menu">
+              <p class="card__place-name">Карачаево-Черкессия</p>
+              <button class="card__like-button">
+                <img
+                  src="./images/like.svg"
+                  alt="Лайк"
+                  class="card__like card__like_active"
+                />
+              </button>
             </div>
           </article>
           <article class="card">
             <img
               src="./images/(2).png"
               alt="Гора на закате"
-              class="cards__image"
+              class="card__image"
             />
-            <div class="cards__info">
-              <p class="cards__place-name">Гора Эльбрус</p>
-              <img src="./images/like.svg" alt="Лайк" class="cards__like" />
+            <div class="card__menu">
+              <p class="card__place-name">Гора Эльбрус</p>
+              <button class="card__like-button">
+                <img src="./images/like.svg" alt="Лайк" class="card__like" />
+              </button>
             </div>
           </article>
           <article class="card">
-            <img src="./images/(3).png" alt="Скала" class="cards__image" />
-            <div class="cards__info">
-              <p class="cards__place-name">Домбай</p>
-              <img src="./images/like.svg" alt="Лайк" class="cards__like" />
+            <img src="./images/(3).png" alt="Скала" class="card__image" />
+            <div class="card__menu">
+              <p class="card__place-name">Домбай</p>
+              <button class="card__like-button">
+                <img src="./images/like.svg" alt="Лайк" class="card__like" />
+              </button>
             </div>
           </article>
           <article class="card">
             <img
               src="./images/(4).png"
               alt="Снежные горы за пустыней"
-              class="cards__image"
+              class="card__image"
             />
-            <div class="cards__info">
-              <p class="cards__place-name">Чарские пески</p>
-              <img src="./images/like.svg" alt="Лайк" class="cards__like" />
+            <div class="card__menu">
+              <p class="card__place-name">Чарские пески</p>
+              <button class="card__like-button">
+                <img src="./images/like.svg" alt="Лайк" class="card__like" />
+              </button>
             </div>
           </article>
           <article class="card">
             <img
               src="./images/(5).png"
               alt="Озеро и горы"
-              class="cards__image"
+              class="card__image"
             />
-            <div class="cards__info">
-              <p class="cards__place-name">Алтай</p>
-              <img src="./images/like.svg" alt="Лайк" class="cards__like" />
+            <div class="card__menu">
+              <p class="card__place-name">Алтай</p>
+              <button class="card__like-button">
+                <img src="./images/like.svg" alt="Лайк" class="card__like" />
+              </button>
             </div>
           </article>
           <article class="card">
             <img
               src="./images/(6).png"
               alt="Голубое озеро в дыму"
-              class="cards__image"
+              class="card__image"
             />
-            <div class="cards__info">
-              <p class="cards__place-name">Камчатка</p>
-              <img src="./images/like.svg" alt="Лайк" class="cards__like" />
+            <div class="card__menu">
+              <p class="card__place-name">Камчатка</p>
+              <button class="card__like-button">
+                <img src="./images/like.svg" alt="Лайк" class="card__like" />
+              </button>
             </div>
           </article>
         </section>
@@ -95,6 +118,23 @@
       <footer class="footer">
         <p class="footer__text">© 2020 Mesto Russia</p>
       </footer>
+      <section class="popup popup_opened">
+        <div class="popup__container">
+          <img src="./images/Close-Icon.svg" alt="Закрыть" class="popup__close">
+          <div class="popup__main-container">
+            <h2 class="popup__heading">Редактировать профиль</h2>
+            <form class="popup__form">
+              <fieldset class="popup__profile-info">
+                <input type="text" class="popup__input_edit_name popup__input" name="name" value="Жак-Ив Кусто">
+                <input type="text" class="popup__input_edit_des popup__input" name="des" value="Исследователь океана">
+              </fieldset>
+              <fieldset class="popup__handlers">
+                <input type="submit" class="popup__button" value="Сохранить">
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </section>
     </div>
   </body>
 </html>

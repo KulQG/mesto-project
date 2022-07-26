@@ -1,0 +1,12 @@
+.popup__main-container {
+    max-width: 358px;
+    width: calc(100% - 36px*2);
+    margin: 34px 0 0 0;
+}
+
+@media all and (max-width: 768px) {
+    .popup__main-container {
+        width: calc(100% - 22px*2);
+        margin: 25px 0 0 0;
+    }
+}

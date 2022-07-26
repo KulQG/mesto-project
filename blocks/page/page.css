@@ -1,21 +1,14 @@
 .page {
-    min-width: 320px;
-    width: 100%;
+    max-width: 1280px;
+    min-width: 100%;
     background-color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: "inter", Arial, sans-serif ;
+    font-family: "Inter", Arial, sans-serif ;
     color: white;
 }
 
-section, p, div, main, header, footer, article, img {
-    border: 1px solid royalblue;
-}
-
-
-@media screen and (min-width:1280px) {
-    .page {
-        min-width: 1280px;
-    }
-}
+/*section, p, div, main, header, footer, article, img {
+    border: 1px solid red;
+}*/

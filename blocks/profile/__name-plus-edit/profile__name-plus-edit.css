@@ -1,0 +1,11 @@
+.profile__name-plus-edit {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+@media all and (max-width: 768px) {
+    .profile__name-plus-edit {
+        justify-content: center;
+    }
+}

@@ -1,0 +1,12 @@
+.card__image {
+    width: 282px;
+    height: 282px;
+    border-radius: 5% 5% 0 0;
+    object-fit: cover;
+}
+
+@media all and (max-width: 1024px) {
+    .card__image {
+        width: 100%;
+    }
+}

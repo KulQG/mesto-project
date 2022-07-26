@@ -1,5 +1,23 @@
 .profile__add-button {
+    margin: 0;
+    padding: 0;
+    height: 50px;
     border: 1px solid white;
     display: flex;
     justify-content: center;
+    align-items: center;
+    max-width: 150px;
+    width: 100%;
+    background-color: black;
+    cursor: pointer;
+}
+
+.profile__add-button:hover {
+    opacity: .8;
+}
+
+@media all and (max-width: 768px) {
+    .profile__add-button {
+        max-width: 100%;
+    }
 }

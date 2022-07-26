@@ -1,14 +1,12 @@
-.profile {
-    width: 100%;
+.profile__ava-plus-info {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 30px;
 }
 
 @media all and (max-width: 768px) {
-    .profile {
+    .profile__ava-plus-info {
         flex-direction: column;
-        gap: 36px;
+        gap: 26px;
     }
 }
-    
