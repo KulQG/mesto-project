@@ -6,6 +6,4 @@
 <hr><br>
 На всей странице установлено семейство шрифтов **Inter**
 <br><hr>
-```html <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">```
-<br><hr>
 Статус: **готов к проверке**! 
