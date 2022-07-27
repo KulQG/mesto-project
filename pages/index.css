@@ -1,5 +1,5 @@
-@import url(../vendor/fonts.css);
 @import url(../vendor/normalize.css);
+@import url(../vendor/fonts.css);
 @import url(../blocks/page/page.css);
 @import url(../blocks/content/content.css);
 @import url(../blocks/header/header.css);
@@ -34,7 +34,8 @@
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__input/_edit/popup__input_edit_des.css);
 @import url(../blocks/popup/__input/_edit/popup__input_edit_name.css);
-@import url(../blocks/popup/__button/popup__button.css);
+@import url(../blocks/popup/__button-save/popup__button-save.css);
 @import url(../blocks/popup/__handlers/popup__handlers.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__button-close/popup__button-close.css);
