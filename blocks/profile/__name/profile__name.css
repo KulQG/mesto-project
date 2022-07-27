@@ -5,6 +5,9 @@
     font-weight: 500;
     line-height: 48px;
     text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 @media all and (max-width: 768px){

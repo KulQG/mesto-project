@@ -18,6 +18,6 @@
     .content {
         width: calc(100% - 19px*2);
         gap: 36px;
-        margin-bottom: 48px;
+        margin-bottom: 36px;
     }
 }
