@@ -7,5 +7,6 @@
 @media all and (max-width: 768px) {
     .profile__name-plus-edit {
         justify-content: center;
+        max-width: 282px;
     }
 }
