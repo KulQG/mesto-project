@@ -1,15 +1,15 @@
 .cards {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, minmax(min-content, 1fr)); 
-    grid-template-rows: repeat(2, minmax(min-content, 1fr));
+    grid-template-columns: repeat(3, minmax(min-content, 282px)); 
+    grid-template-rows: repeat(auto, minmax(min-content, 1fr));
     gap: 17px;
 }
 
 @media all and (max-width: 1024px) {
     .cards {
-        grid-template-columns: repeat(2, minmax(min-content, 1fr)); 
-        grid-template-rows: repeat(3, minmax(min-content, 1fr));;
+        grid-template-columns: repeat(2, minmax(298px, 431.5px)); 
+        grid-template-rows: repeat(auto, minmax(min-content, 1fr));;
     }
 }
 
