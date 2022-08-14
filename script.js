@@ -1,21 +1,29 @@
 const page = document.querySelector('.page');
-const $popup = page.querySelectorAll('.popup');
+const $popups = page.querySelectorAll('.popup');
 const popup = page.querySelector('.popup');
 const popupEdit = page.querySelector('.popup_type_edit');
 const popupAdd = page.querySelector('.popup_type_add');
-const closeButton = page.querySelector('.popup__button-close');
-const editButton = page.querySelector('.profile__edit-button');
 const popupInputTop = popup.querySelector('.popup__input_type_top');
 const popupInputBottom = popup.querySelector('.popup__input_type_bottom');
 const profileName = page.querySelector('.profile__name');
 const profileDes = page.querySelector('.profile__des');
 const addButton = page.querySelector('.profile__add-button');
 
-function closeOpenPopupEdit() {
-    popupEdit.classList.toggle('popup_opened');
+const openBtns = page.querySelectorAll('.button-open')
+const openbtn = page.querySelector('.button-open')
+function togglePopup() {
+    const indexOpen = Array.from(openBtns).indexOf(this);
+    $popups[indexOpen].classList.toggle('popup_opened')
 };
-closeButton.addEventListener('click', closeOpenPopupEdit);
-editButton.addEventListener('click', closeOpenPopupEdit);
+openBtns.forEach(openBtn => openBtn.addEventListener('click', togglePopup));
+
+const closeButtons = page.querySelectorAll('.popup__button-close');
+const closeButton = page.querySelector('.popup__button-close');
+closeButtons.forEach(function(item) {
+        item.addEventListener('click', function() {
+        page.querySelector('.popup_opened').classList.remove('popup_opened')
+    })});
+
 
 /*function closeOpenPopupAdd() {
     popupAdd.classList.toggle('.popup_opened')
@@ -42,11 +50,12 @@ function formSubmitHandler(evt) {
 };
 popup.addEventListener('submit', formSubmitHandler);
 
+const likeButton = page.querySelector('.card__like');
 const likeButtons = page.querySelectorAll('.card__like');
-likeButtons.forEach($targetItem.addEventListener('click', () => {
-    $targetItem.classList.toggle('card__like_active')
-    })); 
+likeButtons.forEach(likeButton => likeButton.addEventListener('click', (evt) => {
+    evt.target.classList.toggle('card__like_active')
+})); 
 
 
-closeOpenPopupEdit();
+//closeOpenPopupEdit();
 //closeOpenPopupAdd();
