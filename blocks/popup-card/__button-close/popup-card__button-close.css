@@ -1,0 +1,23 @@
+.popup-card__button-close {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0);
+}
+
+.popup__button-close:hover {
+    opacity: .6;
+}
+
+@media all and (max-width: 768px) {
+    .popup__button-close {
+        width: 20px;
+        height: 20px;
+        top: -36px;
+        right: 0;
+    }
+}
