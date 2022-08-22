@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
   <head lang="ru">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -21,7 +22,7 @@
             <div class="profile__info">
               <div class="profile__name-plus-edit">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <button type="button" class="profile__edit-button button-open">
+                <button type="button" class="profile__edit-button">
                   <img
                     src="./images/Edit-Button.svg"
                     alt="Редактировать"
@@ -32,14 +33,14 @@
               <p class="profile__des">Исследователь океана</p>
             </div>
           </div>
-          <button type="button" class="profile__add-button button-open">
+          <button type="button" class="profile__add-button">
             <img src="./images/plus.svg" alt="Добавить" class="profile__plus" />
           </button>
         </section>
         <section class="cards">
           <template class="template">
             <article class="card">
-              <img src="" alt="Картинка" class="card__image" />
+              <img src="#" alt="Картинка" class="card__image" />
               <button type="button" class="card__delete"></button>
               <div class="card__menu">
                 <h2 class="card__place-name"></h2>
@@ -52,22 +53,15 @@
       <footer class="footer">
         <p class="footer__text">© 2020 Mesto Russia</p>
       </footer>
-      <section class="popup-card">
-        <div class="popup-card__container">
-          <button class="popup-card__button-close button-close"><img src="./images/Close-Icon.svg" alt="Закрыть" class="popup-card__close"></button>
-          <img src="" alt="Картинка" class="popup-card__image">
-          <p class="popup-card__des"></p>
-        </div>
-      </section>
-      <section class="popup popup_type_edit">
+      <section class="popup popup-edit">
         <div class="popup__container">
-          <button type="button" class="popup__button-close button-close"><img src="./images/Close-Icon.svg" alt="Закрыть" class="popup__close"></button>
+          <button type="button" class="popup__button-close popup-edit__button-close"><img src="./images/Close-Icon.svg" alt="Закрыть" class="popup__close"></button>
           <div class="popup__main-container">
             <h2 class="popup__heading">Редактировать профиль</h2>
-            <form class="popup__form" name="form">
+            <form class="popup__form form-edit" name="form-edit">
               <fieldset class="popup__profile-info">
-                <input type="text" class="popup__input popup__input_type_name" name="name" value="Жак-Ив Кусто">
-                <input type="text" class="popup__input popup__input_type_des" name="des" value="Исследователь океана">
+                <input type="text" class="popup__input popup__input_type_name" name="name" value="Жак-Ив Кусто" placeholder="Ваше имя">
+                <input type="text" class="popup__input popup__input_type_des" name="des" value="Исследователь океана" placeholder="Ваша деятельность">
               </fieldset>
               <fieldset class="popup__handlers">
                 <input type="submit" class="popup__button-save" value="Сохранить">
@@ -76,12 +70,12 @@
           </div>
         </div>
       </section>
-        <section class="popup popup_type_add">
+        <section class="popup popup-add">
           <div class="popup__container">
-            <button type="button" class="popup__button-close button-close"><img src="./images/Close-Icon.svg" alt="Закрыть" class="popup__close"></button>
+            <button type="button" class="popup__button-close popup-add__button-close"><img src="./images/Close-Icon.svg" alt="Закрыть" class="popup__close"></button>
             <div class="popup__main-container">
               <h2 class="popup__heading">Новое место</h2>
-              <form class="popup__form" name="form">
+              <form class="popup__form form-add" name="form-add">
                 <fieldset class="popup__profile-info">
                   <input type="text" class="popup__input popup__input_type_place-name" name="name" value="" placeholder="Название">
                   <input type="text" class="popup__input popup__input_type_link" name="des" value="" placeholder="Ссылка на картинку">
@@ -93,10 +87,15 @@
             </div>
           </div>
         </section>
+        <section class="popup popup-card">
+          <div class="popup-card__container">
+            <button class="popup__button-close popup-card__button-close"><img src="./images/Close-Icon.svg" alt="Закрыть" class="popup-card__close"></button>
+            <img src="#" alt="Картинка" class="popup-card__image">
+            <p class="popup-card__des"></p>
           </div>
-        </div>
-      </section>
+        </section>
     </div>
-    <script src='./script.js'></script>
+    <script src="./scripts/cards.js"></script>
+    <script src='./scripts/index.js'></script>
   </body>
 </html>

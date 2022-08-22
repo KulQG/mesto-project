@@ -2,7 +2,7 @@
     position: relative;
     max-width: 282px;
     background: white;
-    border-radius: 5%;
+    border-radius: 10px;
     cursor: pointer;
 }
 
