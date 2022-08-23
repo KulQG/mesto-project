@@ -11,10 +11,17 @@ function openPopup(popup) {
   popup.classList.add('popup_opened')
 }
 
+const popupInputName = page.querySelector('.popup__input_type_name')
+const popupInputDes = page.querySelector('.popup__input_type_des')
+const profileName = page.querySelector('.profile__name')
+const profileDes = page.querySelector('.profile__des')
 editButton.addEventListener('click', () => {
   openPopup(popupEdit)
+  popupInputName.value = profileName.textContent
+  popupInputDes.value = profileDes.textContent
     }
-  )
+)
+
 addButton.addEventListener('click', () => {
   openPopup(popupAdd)
 }
@@ -38,10 +45,6 @@ function closePopup(popup) {
 }
 
 //Изменение имени
-const popupInputName = page.querySelector('.popup__input_type_name')
-  const popupInputDes = page.querySelector('.popup__input_type_des')
-  const profileName = page.querySelector('.profile__name')
-  const profileDes = page.querySelector('.profile__des')
 page.querySelector('.form-edit').addEventListener('submit', (evt) => {
   evt.preventDefault()
   profileName.textContent = popupInputName.value
@@ -61,7 +64,7 @@ function addCard(name, link) {
   const cardElement = cardTemplate.cloneNode(true)
   const cardImage = cardElement.querySelector('.card__image')
 
-  cardElement.querySelector('.card__image').src = link
+  cardImage.src = link
   cardElement.querySelector('.card__place-name').textContent = name
   cardImage.alt = name 
 
