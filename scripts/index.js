@@ -24,7 +24,6 @@ editButton.addEventListener('click', () => {
     }
 )
 
-
 addButton.addEventListener('click', () => {
   openPopup(popupAdd)
 }
@@ -55,17 +54,17 @@ btnCloseEditAva.addEventListener('click', () => {
   closePopup(popupEditAva)
 })
 
-/*popups.forEach((popup) => {
-  popup.addEventListener('click', () => {
-    closePopup(popup)
-  })
-})*/
-
 popups.forEach((popup) => {
   document.addEventListener('keydown', (e) => {
     if (e.keyCode === 27) {
       closePopup(popup)
     }
+  })
+})
+
+popups.forEach((popup) => {
+  popup.addEventListener('click', (evt) => {
+    closePopup(evt.target)
   })
 })
 
@@ -80,143 +79,3 @@ page.querySelector('.form-edit').addEventListener('submit', (evt) => {
   profileDes.textContent = popupInputDes.value
   closePopup(popupEdit)
 })
-
-
-
-/////////////////////////////
-/////////////////////////////
-/////////////////////////////
-
-//Создание новых карточек
-const divCard = page.querySelector('.cards')
-const cardTemplate = page.querySelector('.template').content
-
-function addCard(name, link) {
-  const cardElement = cardTemplate.cloneNode(true)
-  const cardImage = cardElement.querySelector('.card__image')
-
-  cardImage.src = link
-  cardElement.querySelector('.card__place-name').textContent = name
-  cardImage.alt = name 
-
-  const deleteButton = cardElement.querySelector('.card__delete')
-  deleteButton.addEventListener('click', () => {
-    deleteButton.closest('.card').remove()
-  })
-
-  const likeButton = cardElement.querySelector('.card__like')
-    likeButton.addEventListener('click', () => {
-      likeButton.classList.toggle('card__like_active')
-  })
- 
-  const popupCardImage = cardPopup.querySelector('.popup-card__image')
-  const popupCardDes = cardPopup.querySelector('.popup-card__des')
-    cardImage.addEventListener('click', () => {
-      openPopup(cardPopup)
-      cardPopup.classList.add('popup_opened')
-      popupCardImage.src = link
-      popupCardImage.alt = name
-      popupCardDes.textContent = name
-  })
-
-  return cardElement;
-}
-
-initialCards.forEach((element) => {
-  divCard.append(addCard(element.name, element.link))
-})
-
-//Создание новой карточки по нажатию кнопки
-/*export*/ const formAdd = page.querySelector('.form-add')
-formAdd.addEventListener('submit', (evt) => {
-  evt.preventDefault()
-  const popupInputPlaceNameValue = page.querySelector('.popup__input_type_place-name').value
-  const popupInputLinkValue = page.querySelector('.popup__input_type_link').value
-
-  divCard.prepend(addCard(popupInputPlaceNameValue, popupInputLinkValue))
-
-  formAdd.reset();
-
-  closePopup(popupAdd)
-})
-
-/*const inputs = document.querySelectorAll('.popup__input')
-function s () {
-  inputs.forEach((i) => {
-    if (i.value === '') {
-      i.classList.add('input_type_error');
-      console.log('w')
-    } else {
-      i.classList.remove('input_type_error')
-    }
-  })
-}
-
-s();*/
-
-///////////////////
-//////////////////
-/////////////////
-//Валидация форм
-const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add('popup__input_type_error');
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add('popup__input-error_active');
-};
-
-const hideInputError = (formElement, inputElement) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove('popup__input_type_error');
-  errorElement.classList.remove('popup__input-error_active');
-  errorElement.textContent = '';
-};
-
-const checkInputValidity = (formElement, inputElement) => {
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
-  } else {
-    hideInputError(formElement, inputElement);
-  }
-};
-
-const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
-  const buttonElement = formElement.querySelector('.popup__button-save');
-
-  toggleButtonState(inputList, buttonElement);
-
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener('input', function () {
-      checkInputValidity(formElement, inputElement);
-      toggleButtonState(inputList, buttonElement)
-    });
-  });
-};
-
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll('.popup'))
-  formList.forEach((formElement) => {
-    formElement.addEventListener('submit', (evt) => {
-          evt.preventDefault();
-    });
-    
-    setEventListeners(formElement);
-  })
-}
-
-enableValidation()
-
-function hasInvalidInput (inputList) {
-  return inputList.some((inputElement) => {
-      return !inputElement.validity.valid
-  })
-}
-
-function toggleButtonState(inputList, buttonElement){
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add('popup__button-save_inactive')
-  } else {
-    buttonElement.classList.remove('popup__button-save_inactive')
-  }
-}

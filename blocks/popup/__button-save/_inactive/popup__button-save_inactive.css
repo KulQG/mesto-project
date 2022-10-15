@@ -1,4 +1,7 @@
 .popup__button-save_inactive {
-    background: rgba(0, 0, 0, .5);
+    background-color: white;
+    border: 1px rgba(0, 0, 0, .2) solid;
+    color: rgba(0, 0, 0, .2);
     pointer-events: none;
+    user-select: none;
 }

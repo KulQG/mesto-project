@@ -58,10 +58,14 @@
           <form class="popup__form form-edit" name="form-edit" novalidate>
             <fieldset class="popup__fieldset popup-edit__fieldset">
               <input type="text" class="popup__input popup__input_type_name" name="name" value="Жак-Ив Кусто"
-                placeholder="Ваше имя" id="name-input" required minlength="2" maxlength="40">
+                placeholder="Ваше имя" id="name-input" required minlength="2" maxlength="40"
+                pattern="^[a-zA-ZА-Яа-яЁё\s-]+$" data-error-message="Разрешены только латинские, кириллические буквы,
+                знаки дефиса и пробелы">
               <span class="popup__input-error name-input-error"></span>
               <input type="text" class="popup__input popup__input_type_des" name="des" id="des-input"
-                value="Исследователь океана" placeholder="Ваша деятельность" required minlength="2" maxlength="200">
+                value="Исследователь океана" placeholder="Ваша деятельность" required minlength="2" maxlength="200"
+                pattern="^[a-zA-ZА-Яа-яЁё\s-]+$" data-error-message="Разрешены только латинские, кириллические буквы,
+                знаки дефиса и пробелы">
               <span class="popup__input-error des-input-error"></span>
             </fieldset>
             <fieldset class="popup__handlers">
@@ -80,9 +84,10 @@
           <form class="popup__form form-add" name="form-add" novalidate>
             <fieldset class="popup__fieldset popup-add__fieldset">
               <input type="text" class="popup__input popup__input_type_place-name" name="name" id="placename-input"
-                value="" placeholder="Название" required minlength="2" maxlength="30">
+                value="" placeholder="Название" required minlength="2" maxlength="30" pattern="^[a-zA-ZА-Яа-яЁё\s-]+$"
+                data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы">
               <span class="popup__input-error placename-input-error"></span>
-              <input type="text" class="popup__input popup__input_type_link" name="des" id="link-input" value=""
+              <input type="url" class="popup__input popup__input_type_link" name="des" id="link-input" value=""
                 placeholder="Ссылка на картинку" required>
               <span class="popup__input-error link-input-error"></span>
             </fieldset>
@@ -101,10 +106,10 @@
           <h2 class="popup__heading">Новый аватар</h2>
           <form name="form-edit-ava" class="popup__form form-edit-ava" novalidate>
             <fieldset class="popup__fieldset popup__fieldset_type_edit-ava">
-              <input type="text" class="popup__input popup__input_type_ava" name="ava" id="link-ava-input" value=""
-              placeholder="Введите ссылку" required>
-            <span class="popup__input-error link-ava-input-error"></span>
-            <input type="submit" class="popup__button-save" value="Сохранить">
+              <input type="url" class="popup__input popup__input_type_ava" name="ava" id="link-ava-input" value=""
+                placeholder="Введите ссылку" required>
+              <span class="popup__input-error link-ava-input-error"></span>
+              <input type="submit" class="popup__button-save" value="Сохранить">
             </fieldset>
           </form>
         </div>
@@ -119,9 +124,10 @@
       </div>
     </section>
   </div>
-  <script src="./scripts/cards.js"></script>
-  <script src="./scripts/valid.js"></script>
   <script src='./scripts/index.js'></script>
+  <script src="./scripts/cards.js"></script>
+  <script type="module" src="./scripts/valid.js"></script>
+  <script type="module" src="./scripts/createTemplateCards.js"></script>
 </body>
 
 </html>
