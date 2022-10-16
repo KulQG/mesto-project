@@ -1,9 +1,8 @@
 import {
   page, popups, popupEdit, popupAdd, addButton, cardPopup, editButton,
   divCard, popupInputName, popupInputDes, profileName, 
-  profileDes
+  profileDes, popupInputPlaceName,popupInputLink
 } from './components/utils'
-
 
 import { initialCards } from './components/cards';
 import { openPopup, closePopup } from './components/modal';
@@ -45,10 +44,10 @@ initialCards.forEach((element) => {
 const formAdd = page.querySelector('.form-add')
 formAdd.addEventListener('submit', (evt) => {
   evt.preventDefault()
-  const popupInputPlaceNameValue = page.querySelector('.popup__input_type_place-name').value
-  const popupInputLinkValue = page.querySelector('.popup__input_type_link').value
+  //const popupInputPlaceNameValue = page.querySelector('.popup__input_type_place-name').value
+  //const popupInputLinkValue = page.querySelector('.popup__input_type_link').value
 
-  divCard.prepend(addCard(popupInputPlaceNameValue, popupInputLinkValue))
+  divCard.prepend(addCard(popupInputPlaceName.value, popupInputLink.value))
 
   formAdd.reset();
 
@@ -58,7 +57,7 @@ formAdd.addEventListener('submit', (evt) => {
 ///////////////////////
 
 //Закрытие попапов
-const btnCloseEdit = page.querySelector('.popup-edit__button-close')
+/*const btnCloseEdit = page.querySelector('.popup-edit__button-close')
 btnCloseEdit.addEventListener('click', () => {
   closePopup(popupEdit)
 })
@@ -78,23 +77,40 @@ btnCloseEditAva.addEventListener('click', () => {
   closePopup(popupEditAva)
 })*/
 
+
 popups.forEach((popup) => {
   document.addEventListener('keydown', (e) => {
-    if (e.keyCode === 27) {
+    if (e.keyCode === 'Escape') {
       closePopup(popup)
     }
   })
 })
 
+
+export function closeByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened')
+    closePopup(openedPopup)
+  }
+  
+}
+
 popups.forEach((popup) => {
-  popup.addEventListener('click', (evt) => {
-    closePopup(evt.target)
+  popup.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('popup_opened')) {
+          closePopup(popup)
+      }
+      if (evt.target.classList.contains('popup__close')) {
+        closePopup(popup)
+      }
   })
 })
+
+
 //////////валидация
-import { setEventListeners } from './components/validate'
-const objValidEdit = {
-  formSelector: '.form-edit',
+import { enableValidation } from './components/validate'
+const objValid = {
+  formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button-save',
   inactiveButtonClass: 'popup__button-save_inactive',
@@ -102,16 +118,7 @@ const objValidEdit = {
   errorClass: 'popup__input-error_active'
 }
 
-const objValidAdd = {
-  formSelector: '.form-add',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button-save',
-  inactiveButtonClass: 'popup__button-save_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
-}
-setEventListeners(objValidEdit)
-setEventListeners(objValidAdd)
+enableValidation(objValid)
 //////////
 
 

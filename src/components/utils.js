@@ -13,9 +13,11 @@ const popupInputName = page.querySelector('.popup__input_type_name')
 const popupInputDes = page.querySelector('.popup__input_type_des')
 const profileName = page.querySelector('.profile__name')
 const profileDes = page.querySelector('.profile__des')
+const popupInputPlaceName = page.querySelector('.popup__input_type_place-name');
+const popupInputLink = page.querySelector('.popup__input_type_link');
 
 export { 
     page, popups, popupEdit, popupAdd, addButton, cardPopup, editButton,
     editBtnAva, divCard, cardTemplate, popupInputName, popupInputDes, profileName, 
-    profileDes
+    profileDes,popupInputPlaceName,popupInputLink 
 }

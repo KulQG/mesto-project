@@ -27,8 +27,7 @@ const checkInputValidity = (formElement, inputElement, obj) => {
   }
 };
 
-export const setEventListeners = (obj) => {
-  const formElement = document.querySelector(obj.formSelector)
+const setEventListeners = (formElement, obj) => {
   const inputList = Array.from(formElement.querySelectorAll(obj.inputSelector));
   const buttonElement = formElement.querySelector(obj.submitButtonSelector);
 
@@ -41,6 +40,13 @@ export const setEventListeners = (obj) => {
     });
   });
 };
+
+export const enableValidation = (obj) => {
+  const formList = Array.from(document.querySelectorAll(obj.formSelector));
+  formList.forEach((form) => {
+    setEventListeners(form, obj)
+  })
+}
 
 
 function hasInvalidInput(inputList) {
