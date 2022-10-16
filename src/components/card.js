@@ -1,4 +1,4 @@
-import { cardTemplate, cardPopup } from "../index"
+import { cardTemplate, cardPopup } from "./utils"
 import { openPopup } from "./modal"
 
 

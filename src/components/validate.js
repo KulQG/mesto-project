@@ -1,19 +1,19 @@
 
-export const showInputError = (formElement, inputElement, errorMessage, obj) => {
+const showInputError = (formElement, inputElement, errorMessage, obj) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(obj.inputErrorClass);
   errorElement.textContent = errorMessage;
   errorElement.classList.add(obj.errorClass);
 };
 
-export const hideInputError = (formElement, inputElement, obj) => {
+const hideInputError = (formElement, inputElement, obj) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(obj.inputErrorClass);
   errorElement.classList.remove(obj.errorClass);
   errorElement.textContent = '';
 };
 
-export const checkInputValidity = (formElement, inputElement, obj) => {
+const checkInputValidity = (formElement, inputElement, obj) => {
   if (inputElement.validity.patternMismatch) {
     inputElement.setCustomValidity(inputElement.dataset.errorMessage);
   } else {
@@ -43,13 +43,13 @@ export const setEventListeners = (obj) => {
 };
 
 
-export function hasInvalidInput(inputList) {
+function hasInvalidInput(inputList) {
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid
   })
 }
 
-export function disableButtonState(inputList, buttonElement, obj) {
+function disableButtonState(inputList, buttonElement, obj) {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(obj.inactiveButtonClass)
     buttonElement.setAttribute('disabled', "disabled")

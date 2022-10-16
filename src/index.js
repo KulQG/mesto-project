@@ -1,18 +1,8 @@
-export const page = document.querySelector('.page')
-export const popups = page.querySelectorAll('.popup')
-const popupEdit = page.querySelector('.popup-edit')
-export const popupAdd = page.querySelector('.popup-add')
-const popupEditAva = page.querySelector('.popup-edit-ava')
-const addButton = page.querySelector('.profile__add-button')
-export const cardPopup = page.querySelector('.popup-card')
-const editButton = page.querySelector('.profile__edit-button')
-const editBtnAva = page.querySelector('.profile__avatar')
-export const divCard = page.querySelector('.cards')
-export const cardTemplate = page.querySelector('.template').content
-const popupInputName = page.querySelector('.popup__input_type_name')
-const popupInputDes = page.querySelector('.popup__input_type_des')
-const profileName = page.querySelector('.profile__name')
-const profileDes = page.querySelector('.profile__des')
+import {
+  page, popups, popupEdit, popupAdd, addButton, cardPopup, editButton,
+  divCard, popupInputName, popupInputDes, profileName, 
+  profileDes
+} from './components/utils'
 
 
 import { initialCards } from './components/cards';
@@ -157,4 +147,6 @@ const images = [
   { name: 'trash button', link: trashButtonSvg }
 ]
 
-import './pages/index.css'
+import './pages/index.css';
+//import { from } from 'core-js/core/array';
+
