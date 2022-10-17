@@ -55,7 +55,7 @@ function hasInvalidInput(inputList) {
   })
 }
 
-function disableButtonState(inputList, buttonElement, obj) {
+export function disableButtonState(inputList, buttonElement, obj) {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(obj.inactiveButtonClass)
     buttonElement.setAttribute('disabled', "disabled")

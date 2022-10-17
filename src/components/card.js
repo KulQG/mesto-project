@@ -1,4 +1,4 @@
-import { cardTemplate, cardPopup } from "./utils"
+import { cardTemplate, cardPopup, popupCardImage, popupCardDes } from "./utils"
 import { openPopup } from "./modal"
 
 
@@ -20,11 +20,8 @@ export function addCard(name, link) {
     likeButton.classList.toggle('card__like_active')
   })
 
-  const popupCardImage = cardPopup.querySelector('.popup-card__image')
-  const popupCardDes = cardPopup.querySelector('.popup-card__des')
   cardImage.addEventListener('click', () => {
     openPopup(cardPopup)
-    cardPopup.classList.add('popup_opened')
     popupCardImage.src = link
     popupCardImage.alt = name
     popupCardDes.textContent = name

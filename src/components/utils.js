@@ -15,9 +15,13 @@ const profileName = page.querySelector('.profile__name')
 const profileDes = page.querySelector('.profile__des')
 const popupInputPlaceName = page.querySelector('.popup__input_type_place-name');
 const popupInputLink = page.querySelector('.popup__input_type_link');
+const popupSave = document.querySelector('.button-save-add')
+const popupCardImage = cardPopup.querySelector('.popup-card__image')
+const popupCardDes = cardPopup.querySelector('.popup-card__des')
 
 export { 
     page, popups, popupEdit, popupAdd, addButton, cardPopup, editButton,
     editBtnAva, divCard, cardTemplate, popupInputName, popupInputDes, profileName, 
-    profileDes,popupInputPlaceName,popupInputLink 
+    profileDes,popupInputPlaceName,popupInputLink,popupSave ,popupCardImage,
+    popupCardDes
 }

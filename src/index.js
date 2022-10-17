@@ -1,7 +1,7 @@
 import {
   page, popups, popupEdit, popupAdd, addButton, cardPopup, editButton,
   divCard, popupInputName, popupInputDes, profileName, 
-  profileDes, popupInputPlaceName,popupInputLink
+  profileDes, popupInputPlaceName,popupInputLink, popupSave
 } from './components/utils'
 
 import { initialCards } from './components/cards';
@@ -44,40 +44,20 @@ initialCards.forEach((element) => {
 const formAdd = page.querySelector('.form-add')
 formAdd.addEventListener('submit', (evt) => {
   evt.preventDefault()
-  //const popupInputPlaceNameValue = page.querySelector('.popup__input_type_place-name').value
-  //const popupInputLinkValue = page.querySelector('.popup__input_type_link').value
 
   divCard.prepend(addCard(popupInputPlaceName.value, popupInputLink.value))
 
   formAdd.reset();
 
   closePopup(popupAdd)
+
+  popupSave.classList.add(objValid.inactiveButtonClass)
+  popupSave.setAttribute('disabled', "disabled")
 })
 
 ///////////////////////
 
 //Закрытие попапов
-/*const btnCloseEdit = page.querySelector('.popup-edit__button-close')
-btnCloseEdit.addEventListener('click', () => {
-  closePopup(popupEdit)
-})
-
-const btnCloseAdd = page.querySelector('.popup-add__button-close')
-btnCloseAdd.addEventListener('click', () => {
-  closePopup(popupAdd)
-})
-
-const btnCloseCard = page.querySelector('.popup-card__button-close')
-btnCloseCard.addEventListener('click', () => {
-  closePopup(cardPopup)
-})
-
-/*const btnCloseEditAva = page.querySelector('.popup-edit-ava__button-close')
-btnCloseEditAva.addEventListener('click', () => {
-  closePopup(popupEditAva)
-})*/
-
-
 popups.forEach((popup) => {
   document.addEventListener('keydown', (e) => {
     if (e.keyCode === 'Escape') {
@@ -155,5 +135,4 @@ const images = [
 ]
 
 import './pages/index.css';
-//import { from } from 'core-js/core/array';
 
