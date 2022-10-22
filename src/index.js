@@ -1,12 +1,15 @@
 import {
-  page, popups, popupEdit, popupAdd, addButton, cardPopup, editButton,
-  divCard, popupInputName, popupInputDes, profileName, 
-  profileDes, popupInputPlaceName,popupInputLink, popupSave
+  page, popups, popupEdit, popupAdd, addButton, editButton,
+  divCard, popupInputName, popupInputDes, profileName,
+  profileDes, popupInputPlaceName, popupInputLink, popupSave,
+  formAdd, ava
 } from './components/utils'
 
-import { initialCards } from './components/cards';
+import { fetchCards, fetchProfile, fetchPatchProfile, fetchAddCard} from './components/api';
+
+//import { initialCards } from './components/cards';
 import { openPopup, closePopup } from './components/modal';
-import { addCard } from './components/card';
+import { addCard, addAlienCard } from './components/card';
 
 
 //////////изменение имени
@@ -17,11 +20,19 @@ editButton.addEventListener('click', () => {
 }
 )
 
+
 page.querySelector('.form-edit').addEventListener('submit', (evt) => {
   evt.preventDefault()
   profileName.textContent = popupInputName.value
   profileDes.textContent = popupInputDes.value
+  fetchPatchProfile(profileName.textContent, profileDes.textContent)
   closePopup(popupEdit)
+})
+
+fetchProfile().then((data) => {
+  profileName.textContent = data.name;
+  profileDes.textContent = data.about;
+  ava.src = data.avatar
 })
 
 /////////открытие попапов
@@ -37,15 +48,24 @@ addButton.addEventListener('click', () => {
 
 ////////////////////
 
-initialCards.forEach((element) => {
+/*initialCards.forEach((element) => {
   divCard.append(addCard(element.name, element.link))
+})*/
+
+fetchCards().then((data) => {
+  data.forEach((element) => {
+    divCard.append(addCard(element.name, element.link, element.owner._id, 
+      element._id, element.likes))
+  })
 })
 
-const formAdd = page.querySelector('.form-add')
+
 formAdd.addEventListener('submit', (evt) => {
   evt.preventDefault()
 
   divCard.prepend(addCard(popupInputPlaceName.value, popupInputLink.value))
+
+  fetchAddCard(popupInputPlaceName.value, popupInputLink.value)
 
   formAdd.reset();
 
@@ -72,17 +92,17 @@ export function closeByEscape(evt) {
     const openedPopup = document.querySelector('.popup_opened')
     closePopup(openedPopup)
   }
-  
+
 }
 
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
-      if (evt.target.classList.contains('popup_opened')) {
-          closePopup(popup)
-      }
-      if (evt.target.classList.contains('popup__close')) {
-        closePopup(popup)
-      }
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup)
+    }
+    if (evt.target.classList.contains('popup__close')) {
+      closePopup(popup)
+    }
   })
 })
 
@@ -99,6 +119,10 @@ const objValid = {
 }
 
 enableValidation(objValid)
+//////////
+
+
+
 //////////
 
 
@@ -135,4 +159,5 @@ const images = [
 ]
 
 import './pages/index.css';
+import { data } from 'autoprefixer';
 

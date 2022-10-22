@@ -16,8 +16,10 @@
     <main class="content">
       <section class="profile">
         <div class="profile__ava-plus-info">
-          <a href="#" class="profile__ava-overlay"><img src="<%=require('./images/image.png')%>" alt="Аватар"
-              class="profile__avatar" /></a>
+          <!--<a href="#" class="profile__ava-overlay">-->
+            <img src="<%=require('./images/image.png')%>" alt="Аватар"
+              class="profile__avatar" />
+          <!--</a>-->
           <div class="profile__info">
             <div class="profile__name-plus-edit">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -39,7 +41,10 @@
             <button type="button" class="card__delete"></button>
             <div class="card__menu">
               <h2 class="card__place-name"></h2>
-              <button type="button" class="card__like"></button>
+              <div class="card__like-container">
+                <button type="button" class="card__like"></button>
+                <span class="card__count-like"></span>
+              </div>
             </div>
           </article>
         </template>
