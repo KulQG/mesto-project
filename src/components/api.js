@@ -1,4 +1,7 @@
-const authorization = {authorization: '1f5d3f31-a1ad-4ce2-8d6b-4c6577c82862'};
+import { savingText } from "./modal";
+import { btnSaveAdd, btnSaveEdit, btnSaveEditAva } from "./utils";
+
+const authorization = { authorization: '1f5d3f31-a1ad-4ce2-8d6b-4c6577c82862' };
 const authorPlusContent = {
     authorization: '1f5d3f31-a1ad-4ce2-8d6b-4c6577c82862',
     'Content-Type': 'application/json'
@@ -41,7 +44,7 @@ export async function fetchProfile() {
 
 //отправление данных пользователя
 export function fetchPatchProfile(name, des) {
-    fetch(urlUser, {
+    return fetch(urlUser, {
         method: 'PATCH',
         headers: authorPlusContent,
         body: JSON.stringify({
@@ -50,35 +53,26 @@ export function fetchPatchProfile(name, des) {
         })
     })
         .catch(catchCase)
+        .finally(() => {
+            savingText(btnSaveEdit, false, 'Сохранить')
+        })
 }
 
 //отправление карточек
-export async function fetchAddCard(nameCard, linkCard) {
-    try {
-        return await fetch(urlCards, {
-            method: 'POST',
-            headers: authorPlusContent,
-            body: JSON.stringify({
-                name: nameCard,
-                link: linkCard
-            })
-        });
-    } catch (err) {
-        return catchCase(err);
-    }
+export function fetchAddCard(nameCard, linkCard) {
+    return fetch(urlCards, {
+        method: 'POST',
+        headers: authorPlusContent,
+        body: JSON.stringify({
+            name: nameCard,
+            link: linkCard
+        })
+    })
+        .then((res) => {
+            return res.json()
+        })
+        .catch(catchCase)
 }
-
-//получение количества лайков
-/*export async function fetchCountLikes() {
-    try {
-        const res = await fetch(`https://nomoreparties.co/v1/plus-cohort-16/cards/likes/${cardId}`, {
-            headers: authorization
-        });
-        return checkRes(res);
-    } catch (err) {
-        return catchCase(err);
-    }
-}*/
 
 //удаление карточки
 export async function fetchDeleteCard(cardId) {
@@ -114,4 +108,19 @@ export async function fetchDeleteLike(cardId) {
     } catch (err) {
         return catchCase(err);
     }
+}
+
+//изменение аватара
+export function fetchPatchAva(link) {
+    return fetch('https://nomoreparties.co/v1/plus-cohort-16/users/me/avatar', {
+        method: 'PATCH',
+        headers: authorPlusContent,
+        body: JSON.stringify({
+            avatar: link
+        })
+    })
+        .catch(catchCase)
+        .finally(() => {
+            savingText(btnSaveEditAva, false, 'Сохранить')
+        })
 }

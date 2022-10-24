@@ -1,15 +1,20 @@
 import {
   page, popups, popupEdit, popupAdd, addButton, editButton,
   divCard, popupInputName, popupInputDes, profileName,
-  profileDes, popupInputPlaceName, popupInputLink, popupSave,
-  formAdd, ava
+  profileDes, popupInputPlaceName, popupInputLink,
+  formAdd, ava, popupEditAva, popupInputAva, avatarImage, formEditAva,
+  btnSaveAdd, btnSaveEdit, btnSaveEditAva, btnCloseCard, cardPopup
 } from './components/utils'
 
-import { fetchCards, fetchProfile, fetchPatchProfile, fetchAddCard} from './components/api';
+import {
+  fetchCards, fetchProfile,
+  fetchPatchProfile, fetchAddCard,
+  fetchPatchAva
+} from './components/api';
 
 //import { initialCards } from './components/cards';
-import { openPopup, closePopup } from './components/modal';
-import { addCard, addAlienCard } from './components/card';
+import { openPopup, closePopup, savingText } from './components/modal';
+import { addCard } from './components/card';
 
 
 //////////изменение имени
@@ -23,17 +28,21 @@ editButton.addEventListener('click', () => {
 
 page.querySelector('.form-edit').addEventListener('submit', (evt) => {
   evt.preventDefault()
+  savingText(btnSaveEdit, true, 'Сохранить')
   profileName.textContent = popupInputName.value
   profileDes.textContent = popupInputDes.value
   fetchPatchProfile(profileName.textContent, profileDes.textContent)
-  closePopup(popupEdit)
+    .then(() => { closePopup(popupEdit) })
+    .finally(() => { savingText(btnSaveEdit, false, 'Сохранить') })
+  //closePopup(popupEdit)
 })
 
 fetchProfile().then((data) => {
   profileName.textContent = data.name;
   profileDes.textContent = data.about;
-  ava.src = data.avatar
+  avatarImage.src = data.avatar
 })
+
 
 /////////открытие попапов
 
@@ -42,9 +51,21 @@ addButton.addEventListener('click', () => {
 }
 )
 
-/*editBtnAva.addEventListener('click', () => {
+ava.addEventListener('click', () => {
   openPopup(popupEditAva)
-})*/
+})
+
+///////изменение аватара
+formEditAva.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  savingText(btnSaveEditAva, true, 'Сохранить');
+  avatarImage.src = popupInputAva.value
+  fetchPatchAva(popupInputAva.value)
+    .then(() => { closePopup(popupEditAva) })
+    .finally(() => { savingText(btnSaveEditAva, false, 'Сохранить') })
+  formEditAva.reset()
+})
+console.log(btnSaveEditAva.value)
 
 ////////////////////
 
@@ -54,7 +75,7 @@ addButton.addEventListener('click', () => {
 
 fetchCards().then((data) => {
   data.forEach((element) => {
-    divCard.append(addCard(element.name, element.link, element.owner._id, 
+    divCard.append(addCard(element.name, element.link, element.owner._id,
       element._id, element.likes))
   })
 })
@@ -63,30 +84,25 @@ fetchCards().then((data) => {
 formAdd.addEventListener('submit', (evt) => {
   evt.preventDefault()
 
-  divCard.prepend(addCard(popupInputPlaceName.value, popupInputLink.value))
+  savingText(btnSaveAdd, true, 'Создать')
 
   fetchAddCard(popupInputPlaceName.value, popupInputLink.value)
+    .then((data) => {
+      divCard.prepend(addCard(data.name, data.link, data.owner._id, data._id, data.likes))
+      closePopup(popupAdd)
+    })
+    .finally(() => { savingText(btnSaveAdd, false, 'Создать') })
 
   formAdd.reset();
 
-  closePopup(popupAdd)
 
-  popupSave.classList.add(objValid.inactiveButtonClass)
-  popupSave.setAttribute('disabled', "disabled")
+  btnSaveAdd.classList.add(objValid.inactiveButtonClass)
+  btnSaveAdd.setAttribute('disabled', "disabled")
 })
 
 ///////////////////////
 
 //Закрытие попапов
-popups.forEach((popup) => {
-  document.addEventListener('keydown', (e) => {
-    if (e.keyCode === 'Escape') {
-      closePopup(popup)
-    }
-  })
-})
-
-
 export function closeByEscape(evt) {
   if (evt.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_opened')
@@ -106,6 +122,9 @@ popups.forEach((popup) => {
   })
 })
 
+btnCloseCard.addEventListener('click', () => {
+  closePopup(cardPopup)
+})
 
 //////////валидация
 import { enableValidation } from './components/validate'

@@ -1,12 +1,13 @@
 import { cardTemplate, cardPopup, popupCardImage, popupCardDes} from "./utils"
 import { openPopup } from "./modal"
-import { fetchCountLikes, fetchDeleteCard, fetchPutLike, fetchDeleteLike } from "./api"
+import { fetchDeleteCard, fetchPutLike, fetchDeleteLike } from "./api"
 
 export function addCard(name, link, ownerId, cardId, likes) {
   const cardElement = cardTemplate.cloneNode(true)
   const cardImage = cardElement.querySelector('.card__image')
   const likesCount = cardElement.querySelector('.card__count-like')
   const likeMyId = likes.filter(like => like._id === 'c35cf3550c5f628c7b9fb729')
+
 
 
   cardImage.src = link
@@ -50,35 +51,6 @@ export function addCard(name, link, ownerId, cardId, likes) {
   return cardElement;
 }
 
-/*export function addAlienCard(name,link) {
-  const cardElement = cardTemplate.cloneNode(true)
-  const cardImage = cardElement.querySelector('.card__image')
-
-  cardImage.src = link
-  cardElement.querySelector('.card__place-name').textContent = name
-  cardImage.alt = name
-
-  const likeButton = cardElement.querySelector('.card__like')
-  likeButton.addEventListener('click', () => {
-    likeButton.classList.toggle('card__like_active')
-  })
-
-  cardElement.querySelector('.card__delete').remove()
-
-  const likesCount = cardElement.querySelector('.card__count-like')
-  fetchCountLikes().then((data) => {
-    likesCount.textContent = data.length
-  })
-
-  cardImage.addEventListener('click', () => {
-    openPopup(cardPopup)
-    popupCardImage.src = link
-    popupCardImage.alt = name
-    popupCardDes.textContent = name
-  })
-
-  return cardElement;
-}*/
 
 
 

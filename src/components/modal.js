@@ -9,4 +9,11 @@ export function closePopup(popup) {
     document.addEventListener('keydown', closeByEscape)
 }
 
+export function savingText(saveBtn, isLoading, originalText) {
+    if (isLoading) {
+        saveBtn.value = 'Сохранение...'
+    } else {
+        saveBtn.value = originalText
+    }
+}
 

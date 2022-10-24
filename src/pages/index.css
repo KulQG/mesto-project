@@ -25,6 +25,7 @@
 @import url(../blocks/profile/__name-plus-edit/profile__name-plus-edit.css);
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__plus/profile__plus.css);
+@import url(../blocks/profile/__ava-plus-over/profile__ava-plus-over.css);
 @import url(../blocks/profile/__ava-overlay/profile__ava-overlay.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__text/footer__text.css);
@@ -46,7 +47,6 @@
 @import url(../blocks/popup/__input/_type/popup__input_type_ava.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_error.css);
 @import url(../blocks/popup/__input-error/popup__input-error.css);
-/*@import url(../blocks/popup/__input/_type/popup__input_error.css);*/
 @import url(../blocks/popup/__input-error/_active/popup__input-error_active.css);
 @import url(../blocks/popup-card/__image/popup-card__image.css);
 @import url(../blocks/popup-card/__container/popup-card__container.css);
@@ -57,3 +57,4 @@
 @import url(../blocks/link-ava-input-error/link-ava-input-error.css);
 @import url(../blocks/link-input-error/link-input-error.css);
 @import url(../blocks/placename-input-error/placename-input-error.css);
+@import url(../blocks/form-edit-ava/form-edit-ava.css);

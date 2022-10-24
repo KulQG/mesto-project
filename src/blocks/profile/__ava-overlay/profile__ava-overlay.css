@@ -1,0 +1,15 @@
+.profile__ava-overlay {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+}
+
+.profile__ava-overlay:hover {
+    background-image: url('../../../images/ruchka.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.8);
+}
