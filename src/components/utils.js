@@ -6,7 +6,7 @@ const popupEditAva = page.querySelector('.popup-edit-ava')
 const addButton = page.querySelector('.profile__add-button')
 const cardPopup = page.querySelector('.popup-card')
 const editButton = page.querySelector('.profile__edit-button')
-const divCard = page.querySelector('.cards')
+const cardsContainer = page.querySelector('.cards')
 const cardTemplate = page.querySelector('.template').content
 const popupInputName = page.querySelector('.popup__input_type_name')
 const popupInputDes = page.querySelector('.popup__input_type_des')
@@ -28,7 +28,7 @@ const btnCloseCard = page.querySelector('.popup-card__button-close')
 
 export { 
     page, popups, popupEdit, popupAdd, addButton, cardPopup, editButton,
-    divCard, cardTemplate, popupInputName, popupInputDes, profileName, 
+    cardsContainer, cardTemplate, popupInputName, popupInputDes, profileName, 
     profileDes,popupInputPlaceName,popupInputLink,popupCardImage,
     popupCardDes, ava, formAdd, popupEditAva, popupInputAva, avatarImage,
     formEditAva, btnSaveAdd, btnSaveEdit, btnSaveEditAva, btnCloseCard

@@ -1,4 +1,3 @@
-import {closeByEscape} from '../index'
 export function openPopup(popup) {
     popup.classList.add('popup_opened')
     document.addEventListener('keydown', closeByEscape)
@@ -14,6 +13,13 @@ export function savingText(saveBtn, isLoading, originalText) {
         saveBtn.value = 'Сохранение...'
     } else {
         saveBtn.value = originalText
+    }
+}
+
+export function closeByEscape(evt) {
+    if (evt.key === 'Escape') {
+        const openedPopup = document.querySelector('.popup_opened')
+        closePopup(openedPopup)
     }
 }
 

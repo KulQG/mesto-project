@@ -9,7 +9,7 @@ const authorPlusContent = {
 const urlCards = 'https://nomoreparties.co/v1/plus-cohort-16/cards';
 const urlUser = 'https://nomoreparties.co/v1/plus-cohort-16/users/me';
 
-const catchCase = (err) => { console.log(err) }
+export const catchCase = (err) => { console.log(err) }
 const checkRes = res => {
     if (res.ok) {
         return res.json();
@@ -52,10 +52,6 @@ export function fetchPatchProfile(name, des) {
             about: des
         })
     })
-        .catch(catchCase)
-        .finally(() => {
-            savingText(btnSaveEdit, false, 'Сохранить')
-        })
 }
 
 //отправление карточек
@@ -77,7 +73,7 @@ export function fetchAddCard(nameCard, linkCard) {
 //удаление карточки
 export async function fetchDeleteCard(cardId) {
     try {
-        return await fetch(`https://nomoreparties.co/v1/plus-cohort-16/cards/${cardId}`, {
+        return await fetch(`${urlCards}/${cardId}`, {
             method: 'DELETE',
             headers: authorization
         });
@@ -89,7 +85,7 @@ export async function fetchDeleteCard(cardId) {
 //Лайк карточки
 export async function fetchPutLike(cardId) {
     try {
-        return await fetch(`https://nomoreparties.co/v1/plus-cohort-16/cards/likes/${cardId}`, {
+        return await fetch(`${urlCards}/likes/${cardId}`, {
             method: 'PUT',
             headers: authorization
         });
@@ -101,7 +97,7 @@ export async function fetchPutLike(cardId) {
 //удаление лайка
 export async function fetchDeleteLike(cardId) {
     try {
-        return await fetch(`https://nomoreparties.co/v1/plus-cohort-16/cards/likes/${cardId}`, {
+        return await fetch(`${urlCards}/likes/${cardId}`, {
             method: 'DELETE',
             headers: authorization
         });
@@ -112,15 +108,14 @@ export async function fetchDeleteLike(cardId) {
 
 //изменение аватара
 export function fetchPatchAva(link) {
-    return fetch('https://nomoreparties.co/v1/plus-cohort-16/users/me/avatar', {
+    return fetch(`${urlUser}/avatar`, {
         method: 'PATCH',
         headers: authorPlusContent,
         body: JSON.stringify({
-            avatar: link
+            avatar: `${link}`
         })
     })
-        .catch(catchCase)
-        .finally(() => {
-            savingText(btnSaveEditAva, false, 'Сохранить')
+        .then((res) => {
+            return res.json()
         })
 }

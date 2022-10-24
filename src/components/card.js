@@ -1,24 +1,26 @@
-import { cardTemplate, cardPopup, popupCardImage, popupCardDes} from "./utils"
+import { cardTemplate, cardPopup, popupCardImage, popupCardDes } from "./utils"
 import { openPopup } from "./modal"
-import { fetchDeleteCard, fetchPutLike, fetchDeleteLike } from "./api"
+import { fetchDeleteCard, fetchPutLike, fetchDeleteLike} from "./api"
+import { userMe } from "../index"
 
 export function addCard(name, link, ownerId, cardId, likes) {
   const cardElement = cardTemplate.cloneNode(true)
   const cardImage = cardElement.querySelector('.card__image')
   const likesCount = cardElement.querySelector('.card__count-like')
-  const likeMyId = likes.filter(like => like._id === 'c35cf3550c5f628c7b9fb729')
 
-
+  const likeMyId = likes.filter(like => like._id === userMe)
 
   cardImage.src = link
   cardElement.querySelector('.card__place-name').textContent = name
   cardImage.alt = name
 
   const deleteButton = cardElement.querySelector('.card__delete')
-  if (ownerId === 'c35cf3550c5f628c7b9fb729') {
+  if (ownerId === userMe) {
     deleteButton.addEventListener('click', () => {
-      deleteButton.closest('.card').remove()
-       fetchDeleteCard(cardId)
+      fetchDeleteCard(cardId)
+      .then(() => {
+        deleteButton.closest('.card').remove()
+      })
     })
   } else {
     deleteButton.remove()
@@ -29,10 +31,14 @@ export function addCard(name, link, ownerId, cardId, likes) {
     likeButton.classList.toggle('card__like_active')
     if (likeButton.classList.contains('card__like_active')) {
       fetchPutLike(cardId)
-      likesCount.textContent = parseInt(likesCount.textContent)+1;
+        .then(() => {
+          likesCount.textContent = parseInt(likesCount.textContent) + 1;
+        })
     } else {
       fetchDeleteLike(cardId)
-      likesCount.textContent = parseInt(likesCount.textContent)-1;
+        .then(() => {
+          likesCount.textContent = parseInt(likesCount.textContent) - 1;
+        })
     }
   })
 
