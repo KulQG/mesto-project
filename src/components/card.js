@@ -28,16 +28,17 @@ export function addCard(name, link, ownerId, cardId, likes) {
 
   const likeButton = cardElement.querySelector('.card__like')
   likeButton.addEventListener('click', () => {
-    likeButton.classList.toggle('card__like_active')
     if (likeButton.classList.contains('card__like_active')) {
-      fetchPutLike(cardId)
-        .then(() => {
-          likesCount.textContent = parseInt(likesCount.textContent) + 1;
-        })
-    } else {
       fetchDeleteLike(cardId)
         .then(() => {
+          likeButton.classList.toggle('card__like_active')
           likesCount.textContent = parseInt(likesCount.textContent) - 1;
+        })
+    } else {
+      fetchPutLike(cardId)
+        .then(() => {
+          likeButton.classList.toggle('card__like_active')
+          likesCount.textContent = parseInt(likesCount.textContent) + 1;
         })
     }
   })

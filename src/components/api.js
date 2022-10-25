@@ -67,7 +67,6 @@ export function fetchAddCard(nameCard, linkCard) {
         .then((res) => {
             return res.json()
         })
-        .catch(catchCase)
 }
 
 //удаление карточки

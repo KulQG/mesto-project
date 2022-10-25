@@ -95,6 +95,7 @@ formAdd.addEventListener('submit', (evt) => {
       cardsContainer.prepend(addCard(data.name, data.link, data.owner._id, data._id, data.likes))
       closePopup(popupAdd)
     })
+    .catch(catchCase)
     .finally(() => { savingText(btnSaveAdd, false, 'Создать') })
 
   formAdd.reset();
