@@ -108,7 +108,6 @@ formAdd.addEventListener('submit', (evt) => {
 ///////////////////////
 
 //Закрытие попапов
-
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
     if (evt.target.classList.contains('popup_opened')) {
@@ -137,13 +136,6 @@ const objValid = {
 
 enableValidation(objValid)
 //////////
-
-/*const onePic = new URL('./images/(1).png', import.meta.url)
-const twoPic = new URL('./images/(2).png', import.meta.url)
-const threePic = new URL('./images/(3).png', import.meta.url)
-const fourPic = new URL('./images/(4).png', import.meta.url)
-const fivePic = new URL('./images/(5).png', import.meta.url)
-const sixPic = new URL('./images/(6).png', import.meta.url)*/
 const iconClose = new URL('./images/Close-Icon.svg', import.meta.url)
 const svgEditButton = new URL('./images/Edit-Button.svg', import.meta.url)
 const likeActive = new URL('./images/like_active.svg', import.meta.url)
@@ -154,12 +146,6 @@ const pen = new URL('./images/ruchka.png', import.meta.url)
 const trashButtonSvg = new URL('./images/trash_button.svg', import.meta.url)
 
 const images = [
-  /*{ name: 'first pic', image: onePic },
-  { name: 'second pic', link: twoPic },
-  { name: 'thirst pic', link: threePic },
-  { name: 'fourth pic', link: fourPic },
-  { name: 'fifth pic', link: fivePic },
-  { name: 'sixth pic', link: sixPic },*/
   { name: 'icon close', link: iconClose },
   { name: 'edit button svg', link: svgEditButton },
   { name: 'like active', link: likeActive },
